@@ -8,7 +8,7 @@ class DataTwoController extends Controller
 {
     public function index()
     {
-        // This is just dummy data. 
+        // This is just dummy data. For this demos sake, it is DB independent.
         // So not a proper collection, which is why it will be read as an array in the view, and not a collection.
         // View collection syntax: {{ $user->fname }}
         // View array syntax: {{ $user['fname'] }}

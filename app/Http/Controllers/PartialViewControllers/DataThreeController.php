@@ -11,16 +11,17 @@ class DataThreeController extends Controller
 {
     public function index()
     {
-        // Keywords classes used to to search in "original.blade.php". 
-        // Extracted HTML from EDB-priser (First link I could find on their site)
+        // Keywords classes used to to search in "original.blade.php".
+        // For this demos sake, it is DB independent.
         $classTags = array(
             'productName' => 'Name',
             'description-container' => 'Description',
             'price-box' => 'Price',
         );
-
+        
         $replacers = array();
         
+        // Extracted HTML from EDB-priser (First link I could find on their site)
         // Rendering view to simulate getting HTML from 3rd party site.
         $view = View::make('original')->render();
         $dom = new DOMDocument('1.0', 'utf-8');
