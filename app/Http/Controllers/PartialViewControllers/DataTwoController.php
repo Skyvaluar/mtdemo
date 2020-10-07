@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\PartialViewControllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class DataTwoController extends Controller
 {

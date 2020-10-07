@@ -2,9 +2,9 @@
     <table class="table">
         <thead>
         <tr class="uppercase">
-            <th class="text-left">Product</th>
-            <th class="text-left">Tags</th>
-            <th class="text-center">Price</th>
+            @foreach ($replacers as $key => $value )
+                <th class="text-left">{{ $key }}</th>
+            @endforeach
         </tr>
         </thead>
         <tbody>

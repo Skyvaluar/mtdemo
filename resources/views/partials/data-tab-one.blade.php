@@ -1,1 +1,1 @@
-This is just dummy data. The page wont change.
+This is just a dummy text. Click a tab to change.

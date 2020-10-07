@@ -5,18 +5,18 @@ namespace App\Http\Controllers\PartialViewControllers;
 use App\Http\Controllers\Controller;
 use DOMDocument;
 use DOMXPath;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class DataThreeController extends Controller
 {
     public function index()
     {
-        // Keywords classes used to to search in "original.blade.php". Extracted HTML from EDB-priser
+        // Keywords classes used to to search in "original.blade.php". 
+        // Extracted HTML from EDB-priser (First link I could find on their site)
         $classTags = array(
-            'productName' => '',
-            'description-container' => '',
-            'price-box' => '',
+            'productName' => 'Name',
+            'description-container' => 'Description',
+            'price-box' => 'Price',
         );
 
         $replacers = array();
@@ -31,14 +31,16 @@ class DataThreeController extends Controller
         // and decided to go with DOMXPath instead.
         $searchHTML = new DOMXPath($dom);
 
-        // Searching for occurrences 
+        // Searching for occurrences and placing data in array.
         foreach($classTags AS $class => $value){
             $nodes = $searchHTML->query("//*[contains(concat(' ', normalize-space(@class), ' '), ' $class ')]");
             foreach($nodes AS $node){
-                $replacers[] = preg_replace('/\s+/', ' ', $node->nodeValue);
+                $replacers[$value] = preg_replace('/\s+/', ' ', $node->nodeValue);
             }
         }
 
+        // This data can all be modified and put into a DB or private sales page, 
+        // but for the sake of overview, its being placed in a table.
         return view('partials.data-tab-three', compact('replacers'));
     }
 }
